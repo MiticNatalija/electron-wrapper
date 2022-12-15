@@ -2,8 +2,7 @@ const electron = require ('electron');
 const path = require('path');
 require('update-electron-app')({
   repo: 'MiticNatalija/electron-wrapper',
-  updateInterval: '1 minute',
-  logger: require('electron-log')
+  updateInterval: '6 minutes'
 });
 const app = electron.app; // electron module
 const BrowserWindow = electron.BrowserWindow; //enables UI
