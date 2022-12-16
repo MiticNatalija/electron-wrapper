@@ -1,17 +1,21 @@
 {
   "name": "electron-Natalija",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Electron wrapper for player",
   "main": "main.js",
   "repository": {
-    "url": "MiticNatalija/electron-wrapper"
+    "type": "git",
+    "url": "https://github.com/MiticNatalija/electron-wrapper.git"
   },
   "scripts": {
     "test": "Test",
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "publish": "electron-forge publish"
+    "publish": "electron-forge publish",
+    "build": "electron-builder build --win --publish never",
+    "deploy": "electron-builder build --win --publish always"
+    
   },
   "author": "Natalija",
   "license": "ISC",
@@ -22,10 +26,12 @@
     "@electron-forge/maker-squirrel": "^6.0.4",
     "@electron-forge/maker-zip": "^6.0.4",
     "@electron-forge/publisher-github": "^6.0.4",
-    "electron": "^22.0.0"
+    "electron": "^22.0.0",
+    "electron-builder": "^23.6.0"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
+    "electron-updater": "^5.3.0",
     "update-electron-app": "^2.0.1"
   }
 }
