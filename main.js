@@ -97,6 +97,9 @@ app.on('ready', _ => {
     globalShortcut.register('Control+Shift+K', () =>{
         win.kiosk = !win.kiosk;
     });
+    globalShortcut.register('Control+Shift+L', () =>{
+      win.kiosk = !win.kiosk;
+  });
     globalShortcut.register('Control+Shift+R', () =>{
         app.relaunch();
         app.exit();
