@@ -38,7 +38,7 @@
     </button>
   </div>
   <script>
-    const { ipcRenderer } = require('electron');
+    const ipcRenderer = window.ipcRenderer;
     const version = document.getElementById('version');
     
     ipcRenderer.send('app_version');

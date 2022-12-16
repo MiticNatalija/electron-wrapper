@@ -11,7 +11,10 @@ app.on('ready', _ => {
     win = new BrowserWindow({
     width: 800,
     height: 600,
-    kiosk: true
+    kiosk: true,
+    webPreferences:{
+      preload: path.join(app.getAppPath(),'preload.js')
+    }
     });
 
     //const menu = Menu.buildFromTemplate([]);
