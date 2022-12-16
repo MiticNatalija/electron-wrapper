@@ -5,7 +5,12 @@ const path = require('path');
 let win
 
 if (require('electron-squirrel-startup')) return; //app.quit()
+const NOTIFICATION_TITLE = 'Basic Notification'
+const NOTIFICATION_BODY = 'Notification from the Main process'
 
+function showNotification () {
+  new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY }).show()
+}
 
 app.on('ready', _ => {
     win = new BrowserWindow({
@@ -21,12 +26,7 @@ app.on('ready', _ => {
       preload: path.join(__dirname,'preload.js')
     }
     });
-    const NOTIFICATION_TITLE = 'Basic Notification'
-    const NOTIFICATION_BODY = 'Notification from the Main process'
-    
-    function showNotification () {
-      new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY }).show()
-    }
+   
     //const menu = Menu.buildFromTemplate([]);
    // Menu.setApplicationMenu(menu);
    // win.loadURL(path.resolve(process.argv0));    // npm run start ---http://localhost:4200/
