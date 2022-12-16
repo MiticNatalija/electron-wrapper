@@ -13,10 +13,20 @@ app.on('ready', _ => {
     height: 600,
     kiosk: true,
     webPreferences:{
-      preload: path.join(app.getAppPath(),'preload.js')
+      nodeIntegration: false,
+      nodeIntegrationInWorker: false,
+      nodeIntegrationInSubFrames: false,
+      contextIsolation: true,
+      enableRemoteModule: false,
+      preload: path.join(__dirname,'preload.js')
     }
     });
-
+    const NOTIFICATION_TITLE = 'Basic Notification'
+    const NOTIFICATION_BODY = 'Notification from the Main process'
+    
+    function showNotification () {
+      new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY }).show()
+    }
     //const menu = Menu.buildFromTemplate([]);
    // Menu.setApplicationMenu(menu);
    // win.loadURL(path.resolve(process.argv0));    // npm run start ---http://localhost:4200/
@@ -55,6 +65,7 @@ ipcMain.on('app_version', (event) => {
 });
 
 autoUpdater.on('update-available', () => {
+  showNotification();
   win.webContents.send('update_available');
 });
 autoUpdater.on('update-downloaded', () => {
