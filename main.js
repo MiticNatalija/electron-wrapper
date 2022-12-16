@@ -86,8 +86,8 @@ app.on('ready', _ => {
     kiosk: true
     });
 
-    const menu = Menu.buildFromTemplate([]);
-    Menu.setApplicationMenu(menu);
+    //const menu = Menu.buildFromTemplate([]);
+   // Menu.setApplicationMenu(menu);
    // win.loadURL(path.resolve(process.argv0));    // npm run start ---http://localhost:4200/
     win.loadURL("http://localhost:4200/");  
 

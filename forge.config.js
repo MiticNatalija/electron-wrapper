@@ -25,4 +25,16 @@ module.exports = {
       },
     }
   ],
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'MiticNatalija',
+          name: 'electron-wrapper'
+        },
+        prerelease: true
+      }
+    }
+  ]
 };
