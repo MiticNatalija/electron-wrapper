@@ -1,0 +1,4 @@
+appId: electron-wrapper
+publish:
+  provider: github
+  token: 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

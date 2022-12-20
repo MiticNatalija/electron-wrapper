@@ -1,4 +1,4 @@
-const {app, BrowserWindow, ipcMain, globalShortcut} = require('electron');
+const {app, BrowserWindow, ipcMain, globalShortcut, Notification} = require('electron');
 const { autoUpdater } = require('electron-updater');
 const path = require('path');
 
@@ -9,14 +9,15 @@ const NOTIFICATION_TITLE = 'Basic Notification'
 const NOTIFICATION_BODY = 'Notification from the Main process'
 
 function showNotification () {
-  new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY }).show()
+  let not = new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY });
+  not.show();
 }
 
 app.on('ready', _ => {
     win = new BrowserWindow({
     width: 800,
     height: 600,
-    kiosk: true,
+    kiosk: false,
     webPreferences:{
       nodeIntegration: false,
       nodeIntegrationInWorker: false,
@@ -42,6 +43,11 @@ app.on('ready', _ => {
         app.relaunch();
         app.exit();
     });
+
+    globalShortcut.register('Control+Shift+N', () =>{
+      showNotification();
+  });
+
 
     win.once('ready-to-show', () => {
       autoUpdater.checkForUpdatesAndNotify();
