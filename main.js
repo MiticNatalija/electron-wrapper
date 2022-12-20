@@ -13,6 +13,31 @@ function showNotification () {
   not.show();
 }
 
+function sendStatusToWindow(text) {
+  win.webContents.send('message', text);
+}
+autoUpdater.on('checking-for-update', () => {
+  sendStatusToWindow('Checking for update...');
+});
+autoUpdater.on('update-available', (info) => {
+  sendStatusToWindow('Update available.');
+})
+autoUpdater.on('update-not-available', (info) => {
+  sendStatusToWindow('Update not available.');
+})
+autoUpdater.on('error', (err) => {
+  sendStatusToWindow('Error in auto-updater. ' + err);
+})
+autoUpdater.on('download-progress', (progressObj) => {
+  let log_message = "Download speed: " + progressObj.bytesPerSecond;
+  log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
+  log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
+  sendStatusToWindow(log_message);
+})
+autoUpdater.on('update-downloaded', (info) => {
+  sendStatusToWindow('Update downloaded');
+});
+
 app.on('ready', _ => {
     win = new BrowserWindow({
     width: 800,
@@ -47,11 +72,8 @@ app.on('ready', _ => {
     globalShortcut.register('Control+Shift+N', () =>{
       showNotification();
   });
-
-
-    win.once('ready-to-show', () => {
-      autoUpdater.checkForUpdatesAndNotify();
-    });
+  
+    autoUpdater.checkForUpdatesAndNotify();
 });
 
 app.on('window-all-closed', function () {
@@ -66,17 +88,18 @@ app.on('window-all-closed', function () {
 //   }
 // });
 
-ipcMain.on('app_version', (event) => {
-  event.sender.send('app_version', { version: app.getVersion() });
-});
+// ipcMain.on('app_version', (event) => {
+//   event.sender.send('app_version', { version: app.getVersion() });
+// });
 
-autoUpdater.on('update-available', () => {
-  showNotification();
-  win.webContents.send('update_available');
-});
-autoUpdater.on('update-downloaded', () => {
-  win.webContents.send('update_downloaded');
-});
-ipcMain.on('restart_app', () => {
-  autoUpdater.quitAndInstall();
-});
+// autoUpdater.on('update-available', () => {
+//   showNotification();
+//   win.webContents.send('update_available');
+// });
+// autoUpdater.on('update-downloaded', () => {
+//   win.webContents.send('update_downloaded');
+// });
+
+// ipcMain.on('restart_app', () => {
+//   autoUpdater.quitAndInstall();
+// });
