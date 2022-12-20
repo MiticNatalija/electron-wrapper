@@ -1,6 +1,6 @@
 {
   "name": "electron-Natalija",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Electron wrapper for player",
   "main": "main.js",
   "repository": {
