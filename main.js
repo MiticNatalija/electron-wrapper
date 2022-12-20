@@ -6,7 +6,7 @@ let win
 
 if (require('electron-squirrel-startup')) return; //app.quit()
 const NOTIFICATION_TITLE = 'Basic Notification'
-const NOTIFICATION_BODY = 'Notification from the Main process v1.2.3'
+const NOTIFICATION_BODY = 'Notification from the Main process v1.2.5'
 
 function showNotification () {
   let not = new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY });
@@ -72,7 +72,7 @@ app.on('ready', _ => {
     globalShortcut.register('Control+Shift+N', () =>{
       showNotification();
   });
-  
+
     autoUpdater.checkForUpdatesAndNotify();
 });
 
