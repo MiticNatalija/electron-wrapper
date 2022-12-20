@@ -33,7 +33,8 @@ module.exports = {
           owner: 'MiticNatalija',
           name: 'electron-wrapper'
         },
-        prerelease: true
+        prerelease: false,
+        draft: true
       }
     }
   ]

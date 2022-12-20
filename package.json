@@ -1,6 +1,6 @@
 {
   "name": "electron-Natalija",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "Electron wrapper for player",
   "main": "main.js",
   "repository": {
@@ -12,7 +12,7 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "publish": "electron-forge publish",
+    "publish": "electron-forge publish --auth-token=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",
     "build": "electron-builder build --win --publish never",
     "deploy": "electron-builder build --win --publish always"
     

@@ -6,7 +6,7 @@ let win
 
 if (require('electron-squirrel-startup')) return; //app.quit()
 const NOTIFICATION_TITLE = 'Basic Notification'
-const NOTIFICATION_BODY = 'Notification from the Main process v1.2.8'
+const NOTIFICATION_BODY = 'Notification from the Main process v1.2.9'
 
 function showNotification () {
   let not = new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY });
@@ -75,6 +75,9 @@ app.on('ready', _ => {
   });
 
     autoUpdater.checkForUpdatesAndNotify();
+    setInterval(() => {
+      autoUpdater.checkForUpdatesAndNotify();
+  }, 1000 * 60);
 });
 
 app.on('window-all-closed', function () {
