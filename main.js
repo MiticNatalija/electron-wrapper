@@ -6,7 +6,7 @@ let win
 
 if (require('electron-squirrel-startup')) return; //app.quit()
 const NOTIFICATION_TITLE = 'Basic Notification'
-const NOTIFICATION_BODY = 'Notification from the Main process'
+const NOTIFICATION_BODY = 'Notification from the Main process v1.2.3'
 
 function showNotification () {
   let not = new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY });
